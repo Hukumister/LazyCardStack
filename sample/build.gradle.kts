@@ -61,7 +61,7 @@ dependencies {
     implementation(libs.ui.graphics)
     implementation(libs.ui.tooling.preview)
     implementation(libs.material)
-//    implementation(libs.material3)
+    implementation(libs.navigation)
 
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)

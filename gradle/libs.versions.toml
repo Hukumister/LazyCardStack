@@ -6,11 +6,13 @@ compose = "1.5.1"
 foundation = "1.5.1"
 lifecycle-runtime-ktx = "2.6.1"
 activity-compose = "1.7.2"
+navigation = "2.7.2"
 
 [libraries]
 material = { group = "androidx.compose.material", name = "material", version.ref = "compose" }
 compose = { group = "androidx.compose.ui", name = "ui", version.ref = "compose" }
 foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "foundation" }
+navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
 
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
 lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
@@ -20,7 +22,6 @@ ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics", version.ref
 ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling", version.ref = "compose" }
 ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview", version.ref = "compose" }
 ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest", version.ref = "compose" }
-material3 = { group = "androidx.compose.material3", name = "material3" }
 
 [plugins]
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
