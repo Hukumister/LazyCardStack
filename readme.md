@@ -13,10 +13,9 @@ implementation("io.github.haroncode:lazycardstack:0.0.1")
 
 ## Demo 
 
-![demo](./media/sample.gif)
+![demo](https://github.com/Hukumister/LazyCardStack/blob/master/media/sample.gif)
 
-
-## How to use
+## How to use?
 
 The library has an API similar to LazyColumn
 
@@ -56,7 +55,7 @@ The `LazyCardStackState` gives you access to the card's _offset_ so that you can
 advanced animations according to the amount of swiping done.
 
 
-## How to swipe programmatically
+## How to swipe programmatically?
 
 ```kotlin
 
@@ -88,7 +87,7 @@ scope.launch {
 }
 ```
 
-## How to detect that a card has been swiped away
+## How to detect that a card has been swiped away?
 
 LazyCardStack has a callback that will be called after swiping the card:
 
@@ -101,7 +100,7 @@ LazyCardStack(
 )
 ```
 
-## Can I return previous card
+## Can I return previous card?
 
 Indeed, `LazyCardStackState` gives you method to return previous card:
 
