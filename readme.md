@@ -13,7 +13,7 @@ implementation("io.github.haroncode:lazycardstack:0.0.1")
 
 ## Demo 
 
-<img src="https://github.com/Hukumister/LazyCardStack/blob/master/media/sample.gif" width="250">
+![demo](https://github.com/Hukumister/LazyCardStack/blob/master/media/sample.gif)
 
 ## How to use?
 
