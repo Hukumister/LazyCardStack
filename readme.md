@@ -1,7 +1,7 @@
 # LazyCardStack
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Tinder-like card stack for jetpack compose. 
+Tinder-like card stack for jetpack compose.
 
 ## Installing
 
@@ -13,13 +13,13 @@ implementation("io.github.haroncode:lazycardstack:0.0.1")
 
 ## Demo 
 
-Wait a bit, the gif for the demo is quite large and may take a long time to load
+Wait a bit, the gif for the demo is quite large and may take a long time to load:
 
 <img src="https://github.com/Hukumister/LazyCardStack/blob/master/media/sample.gif" width="250">
 
 ## How to use?
 
-The library has an API similar to LazyColumn
+The library has an API similar to LazyColumn.
 
 ```kotlin
 val cardStackState = rememberLazyCardStackState()
