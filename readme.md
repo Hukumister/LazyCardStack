@@ -119,6 +119,9 @@ scope.launch {
 
 you must specify the direction from which the animation of returning the card will occur.
 
+## Sample
+
+More usage examples can be found in sample. 
 
 ## License
 ```
