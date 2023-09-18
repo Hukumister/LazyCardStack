@@ -1,7 +1,7 @@
-# Gemini
+# LazyCardStack
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Tinder-like card stack for jetpack compose
+Tinder-like card stack for jetpack compose. 
 
 ## Installing
 
