@@ -13,6 +13,8 @@ implementation("io.github.haroncode:lazycardstack:0.0.1")
 
 ## Demo 
 
+Wait a bit, the gif for the demo is quite large and may take a long time to load
+
 <img src="https://github.com/Hukumister/LazyCardStack/blob/master/media/sample.gif" width="250">
 
 ## How to use?
