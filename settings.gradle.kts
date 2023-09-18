@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "Lazy card stack"
 include(":lazycardstack")
 include(":sample")
+includeBuild("convention-plugins")

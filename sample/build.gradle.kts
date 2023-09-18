@@ -62,6 +62,7 @@ dependencies {
     implementation(libs.ui.tooling.preview)
     implementation(libs.material)
     implementation(libs.navigation)
+    implementation(libs.coil)
 
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)

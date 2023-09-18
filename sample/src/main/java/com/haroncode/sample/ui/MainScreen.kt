@@ -40,5 +40,13 @@ fun MainScreen(
         ) {
             Text(text = "Remove stack")
         }
+
+        Button(
+            modifier = Modifier
+                .fillMaxWidth(),
+            onClick = { navController.navigate("images") }
+        ) {
+            Text(text = "Images stack")
+        }
     }
 }

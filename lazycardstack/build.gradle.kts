@@ -2,7 +2,14 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
+    id("convention.publication")
 }
+
+val libGroup = findProperty("group") as String
+val libVersion = findProperty("version") as String
+
+version = libVersion
+group = libGroup
 
 android {
     namespace = "com.haroncode.lazycardstack"
@@ -29,6 +36,12 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    publishing {
+        multipleVariants {
+            allVariants()
+            withSourcesJar()
+        }
     }
     kotlinOptions {
         jvmTarget = "1.8"
