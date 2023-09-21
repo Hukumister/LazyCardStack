@@ -54,7 +54,7 @@ publishing {
             // Provide artifacts information requited by Maven Central
             pom {
                 name.set("LazyCardStack")
-                description.set("The library is designed to simplify build the MVI architecture in android")
+                description.set("Jetpack Compose library that allows to implement tinder like card stack.")
                 url.set("https://github.com/Hukumister/LazyCardStack")
 
                 licenses {
