@@ -8,7 +8,7 @@ Jetpack compose tinder like card stack.
 Add the dependencies:
 
 ```groovy
-implementation("io.github.haroncode:lazycardstack:0.0.1")
+implementation("io.github.hukumister:lazycardstack:0.0.1")
 ```
 
 ## Demo 
