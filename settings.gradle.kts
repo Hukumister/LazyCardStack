@@ -1,3 +1,4 @@
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 pluginManagement {
     repositories {
         google()
@@ -13,7 +14,8 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Lazy card stack"
+rootProject.name = "LazyCardStackKMP"
 include(":lazycardstack")
-include(":sample")
+include(":sample:android")
+include(":sample:ui")
 includeBuild("convention-plugins")
