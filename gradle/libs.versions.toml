@@ -1,33 +1,26 @@
 [versions]
-agp = "8.1.0"
-kotlin = "1.9.0"
-core-ktx = "1.10.1"
-compose = "1.5.1"
-foundation = "1.5.1"
-lifecycle-runtime-ktx = "2.6.1"
-activity-compose = "1.7.2"
-navigation = "2.7.2"
-coil = "2.4.0"
+compileSdk = "34"
+minSdk = "24"
+activity-compose = "1.8.2"
+agp = "8.1.4"
+compose = "1.5.11"
+composeCompiler = "1.5.6"
+core-ktx = "1.12.0"
+kamelImage = "0.8.3"
+kotlin = "1.9.21"
+uiTooling = "1.5.4"
 
 [libraries]
-material = { group = "androidx.compose.material", name = "material", version.ref = "compose" }
-compose = { group = "androidx.compose.ui", name = "ui", version.ref = "compose" }
-foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "foundation" }
-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
-
-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
 activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
-
-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics", version.ref = "compose" }
-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling", version.ref = "compose" }
-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview", version.ref = "compose" }
-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest", version.ref = "compose" }
-
-coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "uiTooling" }
+compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "uiTooling" }
+core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
+kamel-image = { module = "media.kamel:kamel-image", version.ref = "kamelImage" }
 
 [plugins]
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
 androidApplication = { id = "com.android.application", version.ref = "agp" }
+compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-
+kotlinCocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
+kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }

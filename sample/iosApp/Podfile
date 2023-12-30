@@ -1,0 +1,7 @@
+source 'https://cdn.cocoapods.org'
+platform :ios, '14.1'
+
+target 'iosApp' do
+  use_frameworks!
+  pod 'ui', :path => '../ui'
+end
