@@ -33,16 +33,20 @@ kotlin {
     }
 
     sourceSets {
-        commonMain.dependencies {
-            implementation(projects.lazycardstack)
+        val commonMain by getting {
+            dependencies {
+                implementation(projects.lazycardstack)
 
-            implementation(compose.ui)
-            implementation(compose.foundation)
-            implementation(compose.material)
-            implementation(libs.kamel.image)
+                implementation(compose.ui)
+                implementation(compose.foundation)
+                implementation(compose.material)
+                implementation(libs.kamel.image)
+            }
         }
-        androidMain.dependencies {
-            implementation(libs.activity.compose)
+        val androidMain by getting {
+            dependencies {
+                implementation(libs.activity.compose)
+            }
         }
     }
 
@@ -66,10 +70,9 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-}
 
-dependencies {
-    debugImplementation(libs.compose.ui.tooling)
-    implementation(libs.compose.ui.tooling.preview)
+    dependencies {
+        debugImplementation(libs.compose.ui.tooling)
+        implementation(libs.compose.ui.tooling.preview)
+    }
 }
-

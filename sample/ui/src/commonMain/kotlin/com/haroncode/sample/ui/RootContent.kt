@@ -1,6 +1,7 @@
 package com.haroncode.sample.ui
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -27,13 +28,14 @@ internal enum class Screen {
 
 @Composable
 internal fun RootContent(
-    modifier: Modifier = Modifier
+    paddingValues: PaddingValues = PaddingValues()
 ) {
     var screen by remember { mutableStateOf(Screen.Main) }
 
     LazyCardStackTheme {
         Column(
-            modifier = modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize()
+                .padding(paddingValues)
         ) {
             if (screen != Screen.Main) {
                 TopBar(

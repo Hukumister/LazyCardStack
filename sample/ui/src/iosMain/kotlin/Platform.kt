@@ -1,12 +1,10 @@
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.ComposeUIViewController
 import com.haroncode.lazycardstack.swiper.ComposeWindow
@@ -44,8 +42,7 @@ fun MainViewController(window: UIWindow): UIViewController = ComposeUIViewContro
         LocalComposeWindow provides composeWindow,
     ) {
         RootContent(
-            modifier = Modifier
-                .padding(safePaddingValues)
+            paddingValues = safePaddingValues
         )
     }
 }
