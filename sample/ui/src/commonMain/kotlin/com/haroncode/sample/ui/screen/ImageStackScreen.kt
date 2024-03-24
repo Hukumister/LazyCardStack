@@ -13,13 +13,12 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.Card
 import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.KeyboardArrowLeft
-import androidx.compose.material.icons.filled.KeyboardArrowRight
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -42,7 +41,6 @@ import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 internal fun ImageStackScreen() {
     Box(
@@ -180,7 +178,7 @@ private fun ProfileCard(
                         onClick = onClickLeft
                     ) {
                         Image(
-                            imageVector = Icons.Default.KeyboardArrowLeft,
+                            imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
                             contentDescription = ""
                         )
                     }
@@ -190,7 +188,7 @@ private fun ProfileCard(
                         onClick = onClickRight
                     ) {
                         Image(
-                            imageVector = Icons.Default.KeyboardArrowRight,
+                            imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
                             contentDescription = ""
                         )
                     }

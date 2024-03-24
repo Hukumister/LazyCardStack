@@ -5,7 +5,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -18,7 +18,7 @@ internal fun TopBar(
 ) {
     Box(modifier = modifier) {
         Icon(
-            imageVector = Icons.Default.ArrowBack,
+            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
             contentDescription = null,
             modifier = Modifier
                 .align(Alignment.CenterStart)
