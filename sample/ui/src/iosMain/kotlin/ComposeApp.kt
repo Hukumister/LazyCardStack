@@ -17,7 +17,7 @@ import platform.UIKit.UIWindow
 
 @OptIn(ExperimentalForeignApi::class)
 @Suppress("unused", "FunctionNaming", "FunctionName")
-fun MainViewController(window: UIWindow): UIViewController = ComposeUIViewController {
+fun ComposeApp(window: UIWindow): UIViewController = ComposeUIViewController {
     var safePaddingValues by remember { mutableStateOf(PaddingValues()) }
 
     LaunchedEffect(window.safeAreaInsets) {
