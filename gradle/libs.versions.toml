@@ -1,14 +1,15 @@
 [versions]
 compileSdk = "34"
-minSdk = "24"
+kotlinxCoroutinesCore = "1.8.1-Beta"
+minSdk = "26"
 activity-compose = "1.8.2"
-agp = "8.2.2"
-compose = "1.5.11"
-composeCompiler = "1.5.8"
+agp = "8.3.1"
+compose = "1.6.1"
+composeCompiler = "1.5.10"
 core-ktx = "1.12.0"
 kamelImage = "0.8.3"
-kotlin = "1.9.21"
-uiTooling = "1.6.3"
+kotlin = "1.9.23"
+uiTooling = "1.6.4"
 
 [libraries]
 activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
