@@ -17,6 +17,7 @@ fun MainScreen(
     onInfinityClick: () -> Unit,
     onRemoveClick: () -> Unit,
     onImagesClick: () -> Unit,
+    onSelectedClick: () -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -47,6 +48,14 @@ fun MainScreen(
             onClick = onImagesClick
         ) {
             Text(text = "Images stack")
+        }
+
+        Button(
+            modifier = Modifier
+                .fillMaxWidth(),
+            onClick = onSelectedClick
+        ) {
+            Text(text = "Selected stack")
         }
     }
 }

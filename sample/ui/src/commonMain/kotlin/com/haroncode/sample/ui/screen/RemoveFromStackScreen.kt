@@ -5,10 +5,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Refresh
@@ -28,7 +26,6 @@ import com.haroncode.sample.ui.components.TextCard
 import kotlinx.coroutines.launch
 import kotlin.random.Random
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 internal fun RemoveFromStackScreen() {
     val list = remember {
@@ -46,7 +43,7 @@ internal fun RemoveFromStackScreen() {
                 .padding(24.dp)
                 .fillMaxSize(),
             onSwipedItem = { index, direction ->
-                if (direction == SwipeDirection.Left) {
+                if (direction == SwipeDirection.Left && list.value.isNotEmpty()) {
                     list.value = list.value.toMutableList().also { it.removeAt(index) }
                 }
             },
@@ -66,10 +63,9 @@ internal fun RemoveFromStackScreen() {
             item(
                 key = { "loading" }
             ) {
-                Text(
+                TextCard(
                     modifier = Modifier
-                        .padding(16.dp)
-                        .fillMaxSize(),
+                        .background(Color.White),
                     text = "Loading..."
                 )
             }

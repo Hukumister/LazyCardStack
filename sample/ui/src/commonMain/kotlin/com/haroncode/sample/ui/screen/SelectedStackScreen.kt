@@ -1,52 +1,42 @@
-@file:OptIn(ExperimentalMaterialApi::class)
-
 package com.haroncode.sample.ui.screen
 
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.haroncode.lazycardstack.LazyCardStack
-import com.haroncode.lazycardstack.PagingObserve
 import com.haroncode.lazycardstack.items
 import com.haroncode.lazycardstack.rememberLazyCardStackState
-import com.haroncode.lazycardstack.swiper.SwipeDirection
 import com.haroncode.sample.ui.components.TextCard
-import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalMaterialApi::class)
+
 @Composable
-internal fun InfinityStackScreen() {
-    val list = remember {
-        mutableStateOf(listOf("1", "2", "3", "4", "5", "6", "7"))
+internal fun SelectedStackScreen() {
+    val items = remember {
+        mutableStateOf(
+            listOf(
+                SelectedItem("1", false),
+                SelectedItem("2", true),
+                SelectedItem("3", false),
+                SelectedItem("4", false),
+                SelectedItem("5", false),
+                SelectedItem("6", true),
+            )
+        )
     }
-    val cardStackState = rememberLazyCardStackState(
-        animationSpec = tween(1000)
-    )
-    val scope = rememberCoroutineScope()
+    val cardStackState = rememberLazyCardStackState()
 
-    cardStackState.PagingObserve(prefetchCount = 5) {
-        val lastValue = list.value.last().toInt()
-        val newList = buildList {
-            repeat(20) { index -> add((lastValue + index + 1).toString()) }
-        }
-        list.value += newList
-    }
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -55,33 +45,26 @@ internal fun InfinityStackScreen() {
             modifier = Modifier
                 .padding(24.dp)
                 .fillMaxSize(),
-            directions = setOf(
-                SwipeDirection.Down,
-                SwipeDirection.Up,
-                SwipeDirection.Left,
-                SwipeDirection.Right
-            ),
-            state = cardStackState,
-
+            state = cardStackState
         ) {
             items(
-                items = list.value,
-                key = { it.hashCode() }
-            ) { text ->
+                items = items.value,
+                key = { it.id }
+            ) { item ->
                 TextCard(
                     modifier = Modifier
                         .background(Color.White),
-                    text = text
+                    text = "${item.id} - ${item.selected}"
                 )
             }
 
             item(
-                key = { "loading" }
+                key = { "last_element" },
             ) {
-                Text(
+                TextCard(
                     modifier = Modifier
-                        .padding(16.dp)
-                        .fillMaxSize(),
+                        .background(Color.White)
+                        .dragEnabled(false),
                     text = "Loading..."
                 )
             }
@@ -92,7 +75,7 @@ internal fun InfinityStackScreen() {
                 .align(Alignment.BottomEnd)
                 .padding(end = 16.dp, bottom = 16.dp),
             onClick = {
-                scope.launch { cardStackState.animateToBack(SwipeDirection.Down) }
+                items.value = items.value.map { it.copy(selected = !it.selected) }
             }
         ) {
             Icon(
@@ -103,4 +86,7 @@ internal fun InfinityStackScreen() {
     }
 }
 
-
+data class SelectedItem(
+    val id: String,
+    val selected: Boolean
+)

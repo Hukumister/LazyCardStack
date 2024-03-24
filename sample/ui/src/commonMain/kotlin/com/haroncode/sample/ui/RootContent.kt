@@ -17,13 +17,15 @@ import com.haroncode.sample.ui.screen.ImageStackScreen
 import com.haroncode.sample.ui.screen.InfinityStackScreen
 import com.haroncode.sample.ui.screen.MainScreen
 import com.haroncode.sample.ui.screen.RemoveFromStackScreen
+import com.haroncode.sample.ui.screen.SelectedStackScreen
 import com.haroncode.sample.ui.theme.LazyCardStackTheme
 
 internal enum class Screen {
     Main,
     Infinity,
     Remove,
-    Images
+    Images,
+    Selected
 }
 
 @Composable
@@ -52,12 +54,14 @@ internal fun RootContent(
                 Screen.Main -> MainScreen(
                     onInfinityClick = { screen = Screen.Infinity },
                     onRemoveClick = { screen = Screen.Remove },
-                    onImagesClick = { screen = Screen.Images }
+                    onImagesClick = { screen = Screen.Images },
+                    onSelectedClick = { screen = Screen.Selected }
                 )
 
                 Screen.Infinity -> InfinityStackScreen()
                 Screen.Remove -> RemoveFromStackScreen()
                 Screen.Images -> ImageStackScreen()
+                Screen.Selected -> SelectedStackScreen()
             }
         }
     }
