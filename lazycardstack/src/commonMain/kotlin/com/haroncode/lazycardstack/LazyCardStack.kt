@@ -5,7 +5,6 @@ import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.lazy.layout.LazyLayout
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.FractionalThreshold
-import androidx.compose.material.SwipeableDefaults
 import androidx.compose.material.ThresholdConfig
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
@@ -13,16 +12,37 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.Placeable
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.dp
 import com.haroncode.lazycardstack.swiper.SwipeDirection
 import com.haroncode.lazycardstack.swiper.swiper
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalFoundationApi::class, ExperimentalMaterialApi::class)
+@Deprecated("")
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun LazyCardStack(
     modifier: Modifier = Modifier,
     threshold: (Orientation) -> ThresholdConfig = { FractionalThreshold(0.3f) },
-    velocityThreshold: Dp = SwipeableDefaults.VelocityThreshold,
+    velocityThreshold: Dp = 125.dp,
+    directions: Set<SwipeDirection> = setOf(SwipeDirection.Left, SwipeDirection.Right),
+    state: LazyCardStackState = rememberLazyCardStackState(),
+    onSwipedItem: (Int, SwipeDirection) -> Unit = { _, _ -> },
+    content: LazyCardStackScope.() -> Unit
+) {
+    LazyCardStack(
+        modifier = modifier,
+        directions = directions,
+        state = state,
+        onSwipedItem = onSwipedItem,
+        content = content
+    )
+}
+
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+fun LazyCardStack(
+    modifier: Modifier = Modifier,
     directions: Set<SwipeDirection> = setOf(SwipeDirection.Left, SwipeDirection.Right),
     state: LazyCardStackState = rememberLazyCardStackState(),
     onSwipedItem: (Int, SwipeDirection) -> Unit = { _, _ -> },
@@ -30,17 +50,15 @@ fun LazyCardStack(
 ) {
     val itemProviderLambda = rememberLazyCardStackItemProviderLambda(state, content)
     val measurePolicy = rememberLazyCardStackMeasurePolicy(state, itemProviderLambda)
-
     val scope = rememberCoroutineScope()
     LazyLayout(
+        itemProvider = itemProviderLambda,
         modifier = Modifier
             .then(state.remeasurementModifier)
             .then(state.awaitLayoutModifier)
             .swiper(
                 state = state.swiperState,
-                threshold = threshold,
                 directions = directions,
-                velocityThreshold = velocityThreshold,
                 onSwiped = { direction ->
                     val currentIndex = state.visibleItemIndex
                     scope.launch {
@@ -50,7 +68,6 @@ fun LazyCardStack(
                 }
             )
             .then(modifier),
-        itemProvider = itemProviderLambda(),
         measurePolicy = measurePolicy
     )
 }

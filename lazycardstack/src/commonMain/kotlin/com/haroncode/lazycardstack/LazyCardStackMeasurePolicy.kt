@@ -48,8 +48,6 @@ fun rememberLazyCardStackMeasurePolicy(
             else -> IntRange.EMPTY
         }
 
-        state.swiperState.isEnabled = indexRange.count() > 1
-
         val visibleItems = indexRange.mapIndexed { relativeIndex, itemIndex ->
             val placeables = measure(itemIndex, childConstraints)
             val key = itemProvider.getKey(itemIndex)

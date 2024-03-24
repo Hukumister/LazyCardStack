@@ -30,11 +30,21 @@ import kotlin.coroutines.suspendCoroutine
 @Composable
 fun rememberLazyCardStackState(
     firstVisibleItemIndex: Int = 0,
+    horizontalThreshold: (Float) -> Float = { distance -> distance * 0.4f },
+    verticalThreshold: (Float) -> Float = { distance -> distance * 0.3f },
     animationSpec: AnimationSpec<Offset> = SpringSpec(),
 ): LazyCardStackState {
-    return rememberSaveable(saver = LazyCardStackState.Saver(animationSpec)) {
+    return rememberSaveable(
+        saver = LazyCardStackState.Saver(
+            horizontalThreshold = horizontalThreshold,
+            verticalThreshold = verticalThreshold,
+            animationSpec = animationSpec
+        )
+    ) {
         LazyCardStackState(
             firstVisibleItemIndex = firstVisibleItemIndex,
+            horizontalThreshold = horizontalThreshold,
+            verticalThreshold = verticalThreshold,
             animationSpec = animationSpec
         )
     }
@@ -45,9 +55,15 @@ fun rememberLazyCardStackState(
 class LazyCardStackState internal constructor(
     firstVisibleItemIndex: Int = 0,
     private val animationSpec: AnimationSpec<Offset>,
+    horizontalThreshold: (Float) -> Float,
+    verticalThreshold: (Float) -> Float
 ) {
 
-    internal val swiperState = SwiperState(animationSpec)
+    internal val swiperState = SwiperState(
+        horizontalThreshold = horizontalThreshold,
+        verticalThreshold = verticalThreshold,
+        animationSpec = animationSpec
+    )
 
     val offset: Offset get() = swiperState.offset
 
@@ -188,11 +204,15 @@ class LazyCardStackState internal constructor(
          */
         fun Saver(
             animationSpec: AnimationSpec<Offset>,
+            horizontalThreshold: (Float) -> Float,
+            verticalThreshold: (Float) -> Float
         ) = Saver<LazyCardStackState, Int>(
             save = { it.visibleItemIndex },
             restore = {
                 LazyCardStackState(
                     firstVisibleItemIndex = it,
+                    horizontalThreshold = horizontalThreshold,
+                    verticalThreshold = verticalThreshold,
                     animationSpec = animationSpec
                 )
             }
