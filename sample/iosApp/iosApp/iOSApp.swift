@@ -3,7 +3,7 @@
  */
 
 import SwiftUI
-import ui
+import shared
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

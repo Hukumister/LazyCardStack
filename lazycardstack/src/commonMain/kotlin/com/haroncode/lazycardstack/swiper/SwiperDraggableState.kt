@@ -4,21 +4,21 @@ import androidx.compose.foundation.MutatePriority
 import androidx.compose.foundation.MutatorMutex
 import androidx.compose.ui.geometry.Offset
 
-interface SwiperDraggableState {
+public interface SwiperDraggableState {
 
-    suspend fun drag(
+    public suspend fun drag(
         dragPriority: MutatePriority = MutatePriority.Default,
         block: suspend SwiperDragScope.() -> Unit
     )
 }
 
-interface SwiperDragScope {
+public interface SwiperDragScope {
 
-    fun dragBy(offset: Offset)
+    public fun dragBy(offset: Offset)
 }
 
 
-fun SwiperDraggableState(onDelta: (Offset) -> Unit): SwiperDraggableState {
+public fun SwiperDraggableState(onDelta: (Offset) -> Unit): SwiperDraggableState {
     return DefaultSwiperDraggableState(onDelta)
 }
 

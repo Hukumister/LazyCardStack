@@ -12,10 +12,10 @@ import androidx.compose.ui.unit.round
 
 @Composable
 @OptIn(ExperimentalFoundationApi::class)
-fun rememberLazyCardStackMeasurePolicy(
+public fun rememberLazyCardStackMeasurePolicy(
     state: LazyCardStackState,
     itemProviderLambda: () -> LazyLayoutItemProvider,
-) = remember<LazyLayoutMeasureScope.(Constraints) -> MeasureResult>(
+): LazyLayoutMeasureScope.(Constraints) -> MeasureResult = remember(
     state,
     itemProviderLambda
 ) {

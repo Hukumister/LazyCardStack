@@ -20,5 +20,5 @@ rootProject.name = "LazyCardStackKMP"
 
 include(":lazycardstack")
 include(":sample:android")
-include(":sample:ui")
+include(":sample:shared")
 includeBuild("convention-plugins")

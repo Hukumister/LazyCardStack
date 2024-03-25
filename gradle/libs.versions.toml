@@ -7,16 +7,18 @@ agp = "8.3.1"
 compose = "1.6.1"
 composeCompiler = "1.5.10"
 core-ktx = "1.12.0"
-kamelImage = "0.8.3"
+kamel-image = "0.9.3"
 kotlin = "1.9.23"
 uiTooling = "1.6.4"
+ktor = "2.3.9"
 
 [libraries]
 activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "uiTooling" }
 compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "uiTooling" }
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
-kamel-image = { module = "media.kamel:kamel-image", version.ref = "kamelImage" }
+kamel-image = { module = "media.kamel:kamel-image", version.ref = "kamel-image" }
+ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
 
 [plugins]
 androidLibrary = { id = "com.android.library", version.ref = "agp" }

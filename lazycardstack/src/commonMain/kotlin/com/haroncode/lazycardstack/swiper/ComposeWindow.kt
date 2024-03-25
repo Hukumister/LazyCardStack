@@ -1,7 +1,9 @@
 package com.haroncode.lazycardstack.swiper
 
+import androidx.compose.runtime.ProvidableCompositionLocal
 import androidx.compose.runtime.compositionLocalOf
 
-data class ComposeWindow(val width: Int = 0, val height: Int = 0)
+public data class ComposeWindow(val width: Int = 0, val height: Int = 0)
 
-val LocalComposeWindow = compositionLocalOf { ComposeWindow() }
+public val LocalComposeWindow: ProvidableCompositionLocal<ComposeWindow> =
+    compositionLocalOf { ComposeWindow() }

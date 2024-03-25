@@ -7,7 +7,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.snapshotFlow
 
 @Composable
-fun LazyCardStackState.PagingObserve(
+public fun LazyCardStackState.PagingObserve(
     prefetchCount: Int = 10,
     onLoadMore: (Int) -> Unit
 ) {

@@ -51,11 +51,13 @@ android {
 }
 
 dependencies {
-    implementation(projects.sample.ui)
+    implementation(projects.sample.shared)
 
     implementation(libs.core.ktx)
     implementation(libs.activity.compose)
 
     implementation(compose.ui)
     implementation(compose.material)
+    implementation("io.ktor:ktor-client-logging:2.3.9")
+    implementation("io.ktor:ktor-client-logging-native:1.3.1")
 }

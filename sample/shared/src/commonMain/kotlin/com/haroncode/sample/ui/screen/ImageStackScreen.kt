@@ -21,11 +21,8 @@ import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -120,7 +117,6 @@ private fun ProfileCard(
     onClickLeft: () -> Unit = {},
     onClickRight: () -> Unit = {},
 ) {
-    var isLoading by remember { mutableStateOf(false) }
 
     Card(
         modifier = Modifier
@@ -135,22 +131,18 @@ private fun ProfileCard(
             KamelImage(
                 resource = asyncPainterResource(profile.imageUrl),
                 contentDescription = null,
-                contentScale = ContentScale.Crop,
                 onLoading = { progress ->
-                    isLoading = progress < 1f
+                    if (progress < 1f) {
+                        CircularProgressIndicator(
+                            modifier = Modifier
+                                .align(Alignment.Center)
+                        )
+                    }
                 },
-                animationSpec = tween(),
                 modifier = Modifier
                     .fillMaxSize()
                     .clip(MaterialTheme.shapes.small),
             )
-
-            if (isLoading) {
-                CircularProgressIndicator(
-                    modifier = Modifier
-                        .align(Alignment.Center)
-                )
-            }
 
             Column(
                 modifier = Modifier

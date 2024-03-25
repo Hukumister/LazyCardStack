@@ -30,7 +30,7 @@ import kotlin.math.sign
 import kotlin.math.sqrt
 
 
-class SwiperState(
+public class SwiperState(
     private val animationSpec: AnimationSpec<Offset> = SpringSpec(),
     private val horizontalThreshold: (Float) -> Float,
     private val verticalThreshold: (Float) -> Float
@@ -40,19 +40,19 @@ class SwiperState(
 
     private var maxWidth: Int by mutableIntStateOf(0)
 
-    var offset: Offset by mutableStateOf(Offset.Zero)
+    public var offset: Offset by mutableStateOf(Offset.Zero)
         private set
 
-    var scale: Float by mutableFloatStateOf(0.0f)
+    public var scale: Float by mutableFloatStateOf(0.0f)
         private set
 
-    var rotation: Float by mutableFloatStateOf(0.0f)
+    public var rotation: Float by mutableFloatStateOf(0.0f)
         private set
 
-    var isAnimationRunning: Boolean by mutableStateOf(false)
+    public var isAnimationRunning: Boolean by mutableStateOf(false)
         private set
 
-    var isEnabled: Boolean by mutableStateOf(true)
+    public var isEnabled: Boolean by mutableStateOf(true)
 
     internal var directions: Set<SwipeDirection> by mutableStateOf(setOf())
 
@@ -69,7 +69,7 @@ class SwiperState(
         rotation = computeRotation(startDragAmount, offset)
     }
 
-    suspend fun animateToCenter(
+    public suspend fun animateToCenter(
         animation: AnimationSpec<Offset> = animationSpec,
     ) {
         try {
@@ -79,7 +79,7 @@ class SwiperState(
         }
     }
 
-    suspend fun animateTo(
+    public suspend fun animateTo(
         target: SwipeDirection,
         animation: AnimationSpec<Offset> = animationSpec,
     ) {
@@ -90,7 +90,7 @@ class SwiperState(
         }
     }
 
-    suspend fun snapTo(target: Offset) {
+    public suspend fun snapTo(target: Offset) {
         swiperDraggableState.drag {
             dragBy(target - offset)
         }
@@ -128,7 +128,7 @@ class SwiperState(
         }
     }
 
-    fun offsetByDirection(direction: SwipeDirection): Offset = when (direction) {
+    internal fun offsetByDirection(direction: SwipeDirection): Offset = when (direction) {
         SwipeDirection.Left -> {
             val distance = -maxWidth - horizontalThreshold(maxWidth.toFloat())
             Offset(distance, offset.y)

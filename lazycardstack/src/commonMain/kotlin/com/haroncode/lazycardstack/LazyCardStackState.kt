@@ -28,7 +28,7 @@ import kotlin.coroutines.suspendCoroutine
 
 @Stable
 @Composable
-fun rememberLazyCardStackState(
+public fun rememberLazyCardStackState(
     firstVisibleItemIndex: Int = 0,
     horizontalThreshold: (Float) -> Float = { distance -> distance * 0.4f },
     verticalThreshold: (Float) -> Float = { distance -> distance * 0.3f },
@@ -52,7 +52,7 @@ fun rememberLazyCardStackState(
 
 @OptIn(ExperimentalFoundationApi::class)
 @Stable
-class LazyCardStackState internal constructor(
+public class LazyCardStackState internal constructor(
     firstVisibleItemIndex: Int = 0,
     private val animationSpec: AnimationSpec<Offset>,
     horizontalThreshold: (Float) -> Float,
@@ -65,18 +65,18 @@ class LazyCardStackState internal constructor(
         animationSpec = animationSpec
     )
 
-    val offset: Offset get() = swiperState.offset
+    public val offset: Offset get() = swiperState.offset
 
-    val rotation: Float get() = swiperState.rotation
+    public val rotation: Float get() = swiperState.rotation
 
-    val scale: Float get() = swiperState.scale
+    public val scale: Float get() = swiperState.scale
 
-    val isAnimationRunning: Boolean get() = swiperState.isAnimationRunning
+    public val isAnimationRunning: Boolean get() = swiperState.isAnimationRunning
 
-    var itemsCount: Int by mutableIntStateOf(0)
+    public var itemsCount: Int by mutableIntStateOf(0)
         private set
 
-    var visibleItemIndex by mutableIntStateOf(firstVisibleItemIndex)
+    public var visibleItemIndex: Int by mutableIntStateOf(firstVisibleItemIndex)
         private set
 
     private var lastKnownFirstItemKey: Any? = null
@@ -100,7 +100,7 @@ class LazyCardStackState internal constructor(
         }
     }
 
-    suspend fun animateToBack(
+    public suspend fun animateToBack(
         fromDirection: SwipeDirection,
         animation: AnimationSpec<Offset> = animationSpec,
     ) {
@@ -121,7 +121,7 @@ class LazyCardStackState internal constructor(
         remeasurement?.forceRemeasure()
     }
 
-    suspend fun snapTo(index: Int) {
+    public suspend fun snapTo(index: Int) {
         awaitLayoutModifier.waitForFirstLayout()
 
         val realIndex = index.coerceIn(0, itemsCount - 1)
@@ -135,7 +135,7 @@ class LazyCardStackState internal constructor(
         remeasurement?.forceRemeasure()
     }
 
-    suspend fun animateToNext(
+    public suspend fun animateToNext(
         direction: SwipeDirection,
         animation: AnimationSpec<Offset> = animationSpec,
     ) {
@@ -198,15 +198,15 @@ class LazyCardStackState internal constructor(
         return lastKnownIndex
     }
 
-    companion object {
+    public companion object {
         /**
          * The default [Saver] implementation for [LazyListState].
          */
-        fun Saver(
+        public fun Saver(
             animationSpec: AnimationSpec<Offset>,
             horizontalThreshold: (Float) -> Float,
             verticalThreshold: (Float) -> Float
-        ) = Saver<LazyCardStackState, Int>(
+        ): Saver<LazyCardStackState, Int> = Saver<LazyCardStackState, Int>(
             save = { it.visibleItemIndex },
             restore = {
                 LazyCardStackState(

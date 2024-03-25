@@ -10,7 +10,7 @@ import androidx.compose.runtime.rememberUpdatedState
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun rememberLazyCardStackItemProviderLambda(
+public fun rememberLazyCardStackItemProviderLambda(
     state: LazyCardStackState,
     customLazyListScope: LazyCardStackScope.() -> Unit
 ): () -> LazyLayoutItemProvider {

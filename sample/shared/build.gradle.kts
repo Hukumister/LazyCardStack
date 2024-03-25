@@ -41,12 +41,14 @@ kotlin {
                 implementation(compose.ui)
                 implementation(compose.foundation)
                 implementation(compose.material)
-                implementation(libs.kamel.image)
+                api(libs.kamel.image)
             }
         }
         val androidMain by getting {
             dependencies {
+                dependsOn(commonMain)
                 implementation(libs.activity.compose)
+                implementation(libs.ktor.client.android)
             }
         }
     }
