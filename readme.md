@@ -1,14 +1,35 @@
 # LazyCardStack
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Kotlin](https://img.shields.io/badge/kotlin-v1.9.23-blue.svg?logo=kotlin)](http://kotlinlang.org)
+[![Compose Multiplatform](https://img.shields.io/badge/Compose%20Multiplatform-v1.5.10-blue)](https://github.com/JetBrains/compose-multiplatform)
 
-Jetpack compose tinder like card stack.
+Jetpack compose tinder like card stack. Library supports Compose Multiplatform.
 
 ## Installing
 
+### Android
+
 Add the dependencies:
 
-```groovy
-implementation("io.github.hukumister:lazycardstack:0.0.1")
+```kotlin
+implementation("io.github.hukumister:lazycardstack-android:0.0.2")
+```
+
+### Multi-platform
+
+Add the dependency to the common source-set:
+
+```kotlin
+kotlin {
+    sourceSets {
+        commonMain {
+            dependencies {
+                implementation("io.github.hukumister:lazycardstack:0.0.2")
+                // ...
+            }
+        }
+    }
+}
 ```
 
 ## Demo 

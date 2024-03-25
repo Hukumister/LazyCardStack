@@ -45,36 +45,31 @@ publishing {
         }
     }
 
-    publications{
-        register<MavenPublication>("release"){
+    publications.withType<MavenPublication>().configureEach {
 
-//            afterEvaluate {
-//                from(components["release"])
-//            }
-            // Provide artifacts information requited by Maven Central
-            pom {
-                name.set("LazyCardStack")
-                description.set("Jetpack Compose library that allows to implement tinder like card stack.")
+        // Provide artifacts information requited by Maven Central
+        pom {
+            name.set("LazyCardStack")
+            description.set("Jetpack Compose library that allows to implement tinder like card stack.")
+            url.set("https://github.com/Hukumister/LazyCardStack")
+
+            licenses {
+                license {
+                    name.set("MIT")
+                    url.set("https://opensource.org/licenses/MIT")
+                }
+            }
+            developers {
+                developer {
+                    id.set("zaltsman.nikita")
+                    name.set("Zaltsman Nikita")
+                    email.set("nikitazaltsman@gmail.com")
+                }
+            }
+            scm {
+                developerConnection.set("scm:git@github.com:Hukumister/LazyCardStack.git")
+                connection.set("scm:git:git://github.com/Hukumister/LazyCardStack")
                 url.set("https://github.com/Hukumister/LazyCardStack")
-
-                licenses {
-                    license {
-                        name.set("MIT")
-                        url.set("https://opensource.org/licenses/MIT")
-                    }
-                }
-                developers {
-                    developer {
-                        id.set("zaltsman.nikita")
-                        name.set("Zaltsman Nikita")
-                        email.set("nikitazaltsman@gmail.com")
-                    }
-                }
-                scm {
-                    developerConnection.set("scm:git@github.com:Hukumister/LazyCardStack.git")
-                    connection.set("scm:git:git://github.com/Hukumister/LazyCardStack")
-                    url.set("https://github.com/Hukumister/LazyCardStack")
-                }
             }
         }
     }
