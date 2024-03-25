@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.compose)
-//    id("convention.publication")
+    id("convention.publication")
 }
 
 val libGroup = findProperty("group") as String
@@ -17,6 +17,7 @@ kotlin {
     applyDefaultHierarchyTemplate()
     jvmToolchain(17)
 
+    withSourcesJar()
     androidTarget {
         publishLibraryVariants("release")
     }

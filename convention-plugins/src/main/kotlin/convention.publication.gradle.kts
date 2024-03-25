@@ -48,9 +48,9 @@ publishing {
     publications{
         register<MavenPublication>("release"){
 
-            afterEvaluate {
-                from(components["release"])
-            }
+//            afterEvaluate {
+//                from(components["release"])
+//            }
             // Provide artifacts information requited by Maven Central
             pom {
                 name.set("LazyCardStack")
